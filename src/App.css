@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+.container{
+  margin: 0 auto;
+  padding: 100px;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 1920px;
+  background-color: #cae8f2;
+  height: 90vh !important;
+}

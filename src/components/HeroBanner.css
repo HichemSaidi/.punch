@@ -1,0 +1,27 @@
+.sec-3{
+height: 90%;
+display: flex;
+justify-content: space-between;
+align-items:flex-end
+
+}
+.sec-3 h1{
+    font-size: 3vw;
+    font-weight: 500;
+    font-family: 'Work Sans', sans-serif;
+
+}
+.sec-4{
+    height: 100%;
+    background-image: url(../images/FullBg.png);
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position: center bottom;
+    max-height: 1080px;
+
+}
+.sec-3 img{
+    width: 70px;
+    height: 70px;
+
+}
