@@ -51,3 +51,16 @@ src/store/store.js
 
 import { createStore } from 'redux';
 import boolReducer from './reducers/boolReducer'
+
+=====================================================================================================
+==============
+
+import { configureStore } from 'redux-starter-kit';
+import boolReducer from './reducers/boolReducer';
+
+const store = configureStore({
+  reducer: boolReducer,
+  initialState: { value: false }
+});
+
+export default store;
