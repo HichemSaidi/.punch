@@ -1,66 +1,39 @@
-import { createStore } from 'redux';
-import rootReducer from './reducers';
+import React, { useState } from 'react';
+import { CSSTransition } from 'react-transition-group';
 
-const store = createStore(rootReducer);
+function LateralMenu() {
+  const [showMenu, setShowMenu] = useState(false);
 
-export default store;
-===================================================
-import { combineReducers } from 'redux';
-import boolReducer from './boolReducer';
-
-const rootReducer = combineReducers({
-  bool: boolReducer
-});
-
-export default rootReducer;
-=======================================================
-
-const initialState = {
-  value: false
-};
-
-function boolReducer(state = initialState, action) {
-  switch (action.type) {
-    case 'TOGGLE':
-      return {
-        ...state,
-        value: !state.value
-      };
-    default:
-      return state;
-  }
-}
-
-export default boolReducer;
-=============================================
-mport { Provider } from 'react-redux';
-import store from './store';
-import App from './components/App';
-
-render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
-);
-============================================================
-
-import { useSelector, useDispatch } from 'react-redux';
-
-function App() {
-  const value = useSelector(state => state.bool.value);
-  const dispatch = useDispatch();
-
-  let message;
-
-  if (value) {
-    message = 'On';
-  } else {
-    message = 'Off';
+  function handleClose() {
+    setShowMenu(false);
   }
 
   return (
     <div>
-      <div>{message}</div>
-      <button onClick={() => dispatch({ type: 'TOGGLE' })}>Toggle</button>
-    </div
+      <button onClick={() => setShowMenu(true)}>Open menu</button>
+      <CSSTransition
+        in={showMenu}
+        timeout={200}
+        classNames="left-menu"
+        unmountOnExit
+      >
+        <div className="fixed w-64 h-full bg-white z-40 left-0 top-0 overflow-y-auto">
+          <button
+            className="absolute top-0 right-0 p-4"
+            onClick={handleClose}
+          >
+            ×
+          </button>
+          <ul className="mt-10">
+            <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+              Menu item 1
+            </li>
+            <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+              Menu item 2
+            </li>
+            <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+              Menu item 3
+            </li>
+          </ul>
+        </div>
+      </CSSTransition>
