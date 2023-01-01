@@ -1,4 +1,4 @@
-mport React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { CSSTransition } from 'react-transition-group';
 
 function LateralMenu({ showMenu, setShowMenu }) {
@@ -48,3 +48,24 @@ function LateralMenu({ showMenu, setShowMenu }) {
         </ul>
       </div>
     </CSSTransition>
+    <style>
+      .left-menu-enter {
+        transform: translateX(-100%);
+      }
+  
+      .left-menu-enter-active {
+        transform: translateX(0);
+        transition: transform 200ms;
+      }
+  
+      .left-menu-exit {
+        transform: translateX(0);
+      }
+  
+      .left-menu-exit-active {
+        transform: translateX(-100%);
+        transition: transform 200ms;
+      }
+    </style>
+  );
+}
