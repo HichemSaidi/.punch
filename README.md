@@ -28,24 +28,56 @@ import { CSSTransition } from 'react-transition-group';
 function LateralMenu() {
   const [isOpen, setIsOpen] = useState(false);
 
+  ==============================================================================================================
+  import React from 'react';
+import { CSSTransition } from 'react-transition-group';
+
+function LateralMenu({ showMenu }) {
   return (
-    <div>
-      <CSSTransition in={isOpen} timeout={200} classNames="menu" unmountOnExit>
-        <div className="fixed inset-0 flex flex-col">
-          <div className="absolute inset-0 bg-gray-500 bg-opacity-75"></div>
-          <div className="relative z-10 flex-1 flex flex-col bg-white">
-            {/* Menu items go here */}
-          </div>
-        </div>
-      </CSSTransition>
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-8 h-8 bg-gray-800 rounded-full focus:outline-none"
-      >
-        <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-        </svg>
-      </button>
-    </div>
+    <CSSTransition
+      in={showMenu}
+      timeout={200}
+      classNames="left-menu"
+      unmountOnExit
+    >
+      <div className="fixed w-64 h-full bg-white z-40 left-0 top-0 overflow-y-auto">
+        <ul className="mt-10">
+          <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+            Menu item 1
+          </li>
+          <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+            Menu item 2
+          </li>
+          <li className="px-4 py-2 font-bold text-lg text-gray-800 hover:bg-gray-300">
+            Menu item 3
+          </li>
+        </ul>
+      </div>
+    </CSSTransition>
   );
 }
+
+export default LateralMenu;
+======================================================================================================================================
+<style>
+  .left-menu-enter {
+    transform: translateX(-100%);
+  }
+
+  .left-menu-enter-active {
+    transform: translateX(0);
+    transition: transform 200ms;
+  }
+
+  .left-menu-exit {
+    transform: translateX(0);
+  }
+
+  .left-menu-exit-active {
+    transform: translateX(-100%);
+    transition: transform 200ms;
+  }
+</style>
+=================================================================================================================================================
+
+<LateralMenu showMenu={true} />
