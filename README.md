@@ -37,3 +37,36 @@ function LateralMenu() {
           </ul>
         </div>
       </CSSTransition>
+  
+  =======================================================
+  import React from 'react';
+import { useSelector } from 'react-redux';
+import { CSSTransition } from 'react-transition-group';
+
+function LateralMenu() {
+  const value = useSelector(state => state.bool.value);
+
+  return (
+    <CSSTransition
+      in={value}
+      timeout={300}
+      classNames="lateral-menu"
+      unmountOnExit
+    >
+      <div
+        className="lateral-menu fixed inset-0 z-50 h-full flex items-start justify-center bg-gray-100 shadow-xl"
+        style={{ width: '350px' }}
+      >
+        <div className="p-4 hover:bg-gray-200 rounded-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </div>
+      </div>
+    </CSSTransition>
+  );
+}
+
+export default LateralMenu;
+In this code, the content of the lateral menu is a div element with the classes p-4 hover:bg-gray-200 rounded-lg, which add some padding, a hover effect that changes the background color to gray, and rounded corners.
+
+
+
