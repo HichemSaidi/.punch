@@ -69,3 +69,10 @@ function LateralMenu({ showMenu, setShowMenu }) {
     </style>
   );
 }
+
+===================================
+const dispatch = useDispatch();
+
+  function handleToggle() {
+    dispatch(toggle());
+  }
