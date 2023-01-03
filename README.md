@@ -1,62 +1,19 @@
 import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { CSSTransition } from 'react-transition-group';
 
-function BurgerMenuButton() {
-  const value = useSelector(state => state.bool.value);
-  const dispatch = useDispatch();
-
+const Modal = ({ text, onOk, onCancel }) => {
   return (
-    <button
-      className="bg-white hover:bg-gray-200 rounded-full focus:outline-none focus:shadow-outline-blue"
-      onClick={() => dispatch({ type: 'TOGGLE' })}
-    >
-      <CSSTransition
-        in={value}
-        timeout={300}
-        classNames="burger-menu"
-        unmountOnExit
-      >
-        <div className="burger-menu-cross h-6 w-6 transform duration-300">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          </svg>
+    <div className="fixed inset-0 flex items-center justify-center">
+      <div className="relative w-auto max-w-xs bg-white rounded-md shadow-md">
+        <div className="py-4 px-6 text-center">
+          <p className="text-xl font-semibold mb-4">{text}</p>
+          <div className="flex justify-between">
+            <button onClick={onOk} className="px-4 py-2 font-semibold rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:bg-indigo-500">OK</button>
+            <button onClick={onCancel} className="px-4 py-2 font-semibold rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-50 focus:outline-none focus:bg-indigo-100">Cancel</button>
+          </div>
         </div>
-      </CSSTransition>
-      <CSSTransition
-        in={!value}
-        timeout={300}
-        classNames="burger-menu"
-        unmountOnExit
-      >
-        <div className="burger-menu-burger h-6 w-6 transform duration-300">
-          <svg
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </div>
-      </CSSTransition>
-    </button>
+      </div>
+    </div>
   );
 }
 
-export default BurgerMenuButton;
+export default Modal;
